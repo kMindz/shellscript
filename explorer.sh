@@ -11,7 +11,7 @@
      cd client
      npm install
      npm run build
-
+cd
 echo "enter config type 1) fabric-de-server 2) fabric-tools"
 echo "enter option as 1 or 2"
 read options
