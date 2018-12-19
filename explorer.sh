@@ -17,11 +17,11 @@ echo "enter option as 1 or 2"
 read options
 
 if [ $options == 1 ]; then
-cd /home/qq/blockchain-explorer/app/platform/fabric
+cd ./blockchain-explorer/app/platform/fabric
 cp fabric-dev-servers.json  config.json
 echo "fabric-dev-servers copied to config.json"
 else
-cd /home/qq/blockchain-explorer/app/platform/fabric
+cd ./blockchain-explorer/app/platform/fabric
  cp  fabric-tools.json  config.json
 echo "fabric-tools copied to config.json"
 
