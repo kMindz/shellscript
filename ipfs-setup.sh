@@ -35,7 +35,6 @@ function init () {
     # echo "Enter your Public_IP:PORT"
     # PUBLIC_IP=$1
     echo $PUBLIC_IP
-    exit 1
     if [ -d ~/.ipfs1 ] && [ -d ~/.ipfs2 ]; then
         echo "Cleaning your existing config....!"
         sudo rm -rf ~/.ipfs1
