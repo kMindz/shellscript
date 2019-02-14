@@ -61,7 +61,7 @@ function init () {
     fi
     export GOPATH=~/src
     go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen
-    sudo cp /home/test/src/bin/ipfs-swarm-key-gen /usr/local/bin/
+    sudo cp $HOME/src/bin/ipfs-swarm-key-gen /usr/local/bin/
     ipfs-swarm-key-gen > ~/.ipfs1/swarm.key
     cp  ~/.ipfs1/swarm.key  ~/.ipfs2/
     IPFS_PATH=~/.ipfs1 ipfs bootstrap rm --all
