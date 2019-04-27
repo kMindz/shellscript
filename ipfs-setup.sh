@@ -66,19 +66,30 @@ function init () {
     cp  ~/.ipfs1/swarm.key  ~/.ipfs2/
     IPFS_PATH=~/.ipfs1 ipfs bootstrap rm --all
     IPFS_PATH=~/.ipfs2 ipfs bootstrap rm --all
-    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://'$PUBLIC_IP'"]'
-    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://'$PUBLIC_IP'"]'    
-    IPFS_PATH=~/.ipfs1 ipfs bootstrap add /ip4/$ipadd/tcp/4001/ipfs/$SUBSTRING1
-    IPFS_PATH=~/.ipfs2 ipfs bootstrap add /ip4/$ipadd/tcp/4002/ipfs/$SUBSTRING1
-    IPFS_PATH=~/.ipfs1 ipfs bootstrap add /ip4/$ipadd/tcp/4001/ipfs/$SUBSTRING2
-    IPFS_PATH=~/.ipfs2 ipfs bootstrap add /ip4/$ipadd/tcp/4002/ipfs/$SUBSTRING2
+    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://'$PUBLIC_IP':6001"]'
+    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://'$PUBLIC_IP':6002"]'
+    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["GET", "POST"]'
+    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Headers '["Authorization"]'
+    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Expose-Headers '["Location"]'
+    IPFS_PATH=~/.ipfs1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["GET", "POST"]'
+    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Headers '["Authorization"]'
+    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Expose-Headers '["Location"]'
+    IPFS_PATH=~/.ipfs2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+    IPFS_PATH=~/.ipfs1 ipfs bootstrap add /ip4/$PUBLIC_IP/tcp/4001/ipfs/$SUBSTRING1
+    IPFS_PATH=~/.ipfs2 ipfs bootstrap add /ip4/$PUBLIC_IP/tcp/4002/ipfs/$SUBSTRING1
+    IPFS_PATH=~/.ipfs1 ipfs bootstrap add /ip4/$PUBLIC_IP/tcp/4001/ipfs/$SUBSTRING2
+    IPFS_PATH=~/.ipfs2 ipfs bootstrap add /ip4/$PUBLIC_IP/tcp/4002/ipfs/$SUBSTRING2
     sed -i 's/5001/5002/g' ~/.ipfs2/config
     sed -i 's/8080/8081/g' ~/.ipfs2/config
     sed -i 's/4001/4002/g' ~/.ipfs2/config
-    sed -i '10s/127.0.0.1/0.0.0.0/' ~/.ipfs1/config
-    sed -i '12s/127.0.0.1/0.0.0.0/' ~/.ipfs1/config
-    sed -i '10s/127.0.0.1/0.0.0.0/' ~/.ipfs2/config    
-    sed -i '12s/127.0.0.1/0.0.0.0/' ~/.ipfs2/config
+    sed -i '23s/127.0.0.1/0.0.0.0/' ~/.ipfs1/config
+    sed -i '25s/127.0.0.1/0.0.0.0/' ~/.ipfs1/config
+    sed -i '23s/127.0.0.1/0.0.0.0/' ~/.ipfs2/config
+    sed -i '25s/127.0.0.1/0.0.0.0/' ~/.ipfs2/config
+
     
     echo "Done initializing......"
 }
